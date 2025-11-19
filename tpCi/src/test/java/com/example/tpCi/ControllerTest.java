@@ -1,8 +1,11 @@
-package controller;
+package com.example.tpCi;
+
 import org.junit.jupiter.api.*; 
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.boot.test.context.SpringBootTest; 
- 
+import com.example.tpCi.repository.StudentRepository;
+import com.example.tpCi.model.Student;
+
 // AssertJ for fluent assertions 
 import static org.assertj.core.api.Assertions.assertThat; 
 import java.util.List; 
@@ -25,8 +28,9 @@ class ControllerTest {
         // Create a new student object 
         Student student = new Student(); 
         student.setName("Charlie"); 
-        student.setAddress("Algeria");
-          // Save the student to the H2 in-memory database 
+        student.setAddress("Algeria"); 
+ 
+        // Save the student to the H2 in-memory database 
         studentRepository.save(student); 
  
         // Assert that the repository now contains exactly one record 
@@ -43,7 +47,7 @@ class ControllerTest {
         // Assert that there is exactly one student in the list 
         assertThat(students).hasSize(1);
 
-              // Assert that the student's name is "Charlie" 
+        // Assert that the student's name is "Charlie" 
         assertThat(students.get(0).getName()).isEqualTo("Charlie"); 
     } 
-} 
+}
